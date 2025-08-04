@@ -1,11 +1,9 @@
 // importo array di post da /data/posts.js
 const data = require('../data/posts.js');
 
-// mostro tutti i post
+// mostro tutti i post in formato json
 const index = (req, res) => {
-  let filteredArray = data;
-  console.log(data);
-  res.send(filteredArray);
+  res.json(posts);
 };
 
 //show
