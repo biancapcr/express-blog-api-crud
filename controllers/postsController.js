@@ -2,8 +2,23 @@
 const data = require('../data/posts.js');
 
 // mostro tutti i post in formato json
+//const index = (req, res) => {
+  //res.json(posts);
+//};
 const index = (req, res) => {
-  res.json(posts);
+  // recupero il parametro tag dalla query string
+  const tag = req.query.tag;
+  // definisco una variabile che inizialmente contiene tutti i post
+  let filteredPosts = posts;
+  // se tag è stato specificato, applico il filtro
+  if (tag) {
+    filteredPosts = posts.filter(item =>
+      // includo solo i post il cui array 'tags' contiene esattamente il valore di tag
+      item.tags.includes(tag)
+    );
+  }
+  // restituisco l’array in json
+  res.json(filteredPosts);
 };
 
 //show
