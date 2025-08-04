@@ -23,6 +23,21 @@ const show = (req, res) => {
   res.json(post);
 };
 
+//destroy
+const destroy = (req, res) => {
+  // prelevo ID del post dai parametri della richiesta
+  const id = req.params.id;
+  // trovo l'indice del post da eliminare nell'array
+  const idx = posts.findIndex(p => p.id == id);
+  // se non esiste, rispondo con 404 Not Found in json
+  if (idx === -1) {
+    return res.status(404).json({
+      error: '404 not found',
+      message: 'post non trovato'
+    });
+  }
+};
+
 // creo nuovo post
 const create = (req, res) => {
   res.send(`Creazione di un nuovo post`);
