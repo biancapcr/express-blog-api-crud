@@ -37,3 +37,11 @@ const update = (req, res) => {
   const id = req.params.id;
   res.send(`Aggiornamento del post con id ${req.params.id}`);
 };
+
+module.exports= {
+  index,
+  show,
+  create,
+  modify,
+  update,
+};
