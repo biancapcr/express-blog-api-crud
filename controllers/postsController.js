@@ -36,6 +36,12 @@ const destroy = (req, res) => {
       message: 'post non trovato'
     });
   }
+  // rimuovo il post dall'array usando splice
+  posts.splice(idx, 1);
+  // stampa in console l'array aggiornato per debug
+  console.log("Lista post aggiornata:", posts);
+  // risposta con 204 No Content
+  res.status(204).end();
 };
 
 // creo nuovo post
@@ -59,4 +65,5 @@ module.exports= {
   create,
   modify,
   update,
+  destroy
 };
