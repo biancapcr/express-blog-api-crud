@@ -8,6 +8,21 @@ const index = (req, res) => {
   res.send(filteredArray);
 };
 
+//show
+const show = (req, res) => {
+  const id = req.params.id;
+  // usando == per confronto, cerco il post corrispondente all'ID nell'array
+  const post = posts.find(p => p.id == id);
+  if (!post) {
+    // se non trova il post, risponde 404 con JSON di errore
+    return res.status(404).json({
+      error: '404 not found',
+      message: 'post non trovato'
+    });
+  }
+  res.json(post);
+};
+
 // creo nuovo post
 const create = (req, res) => {
   res.send(`Creazione di un nuovo post`);
