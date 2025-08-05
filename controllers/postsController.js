@@ -62,11 +62,30 @@ const destroy = (req, res) => {
   //res.send(`Creazione di un nuovo post`);
 //};
 // creo nuovo post (store)
-const create = (req, res) => {
+//const create = (req, res) => {
     // stampo in console i dati arrivati nel body
-  console.log('Dati ricevuti:', req.body);
+  //console.log('Dati ricevuti:', req.body);
   // per ora risposta con status 201 e rimando indietro ciò che è stato ricevuto
-  res.status(201).json(req.body);
+  //res.status(201).json(req.body);
+//};
+const create = (req, res) => {
+  // definisco il nuovo id prendendo l'ultimo elemento e incrementandolo
+  const newId = data[data.length - 1].id + 1;
+  // destructuring dei campi dal body della request
+  const { title, content, image, tags } = req.body;
+    // definire il nuovo oggetto post
+  const newPost = {
+    id: newId,
+    title,
+    content,
+    image,
+    tags
+  };
+
+  // inserisco il nuovo post nell'array esistente
+  data.push(newPost);
+  // risposta con l'array aggiornato in formato json
+  res.json(data);
 };
 
 // modifica
