@@ -95,10 +95,37 @@ const modify = (req, res) => {
 };
 
 // update
+//const update = (req, res) => {
+  //const id = req.params.id;
+  //res.send(`Aggiornamento del post con id ${req.params.id}`);
+//};
 const update = (req, res) => {
-  const id = req.params.id;
-  res.send(`Aggiornamento del post con id ${req.params.id}`);
+  // prendo l'id e lo converto in intero
+  const id = parseInt(req.params.id, 10);
+
+  // cerco post nell'array
+  const post = data.find(post => post.id === id);
+
+  // se non esiste, restituisco 404 con json di errore
+  if (!post) {
+    res.status(404);
+    return res.json({
+      status: 404,
+      error: "not found",
+      message: "cannot update inexistent post"
+    });
+  }
+
+  // sovrascrizione dei campi del post con quelli ricevuti in body
+  post.title   = req.body.title;
+  post.content = req.body.content;
+  post.image   = req.body.image;
+  post.tags    = req.body.tags;
+
+  // invio indietro il post aggiornato in json
+  res.json(post);
 };
+
 
 module.exports= {
   index,
