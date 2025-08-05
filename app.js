@@ -5,7 +5,7 @@ const express = require('express');
 // creo l’applicazione
 const app = express();
 
-// abilito il parsing del body in formato JSON
+// abilito il parsing del body in formato json
 app.use(express.json());
 
 // imposto la porta

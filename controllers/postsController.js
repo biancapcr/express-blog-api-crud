@@ -58,14 +58,23 @@ const destroy = (req, res) => {
 };
 
 // creo nuovo post
+//const create = (req, res) => {
+  //res.send(`Creazione di un nuovo post`);
+//};
+// creo nuovo post (store)
 const create = (req, res) => {
-  res.send(`Creazione di un nuovo post`);
+    // stampo in console i dati arrivati nel body
+  console.log('Dati ricevuti:', req.body);
+  // per ora risposta con status 201 e rimando indietro ciò che è stato ricevuto
+  res.status(201).json(req.body);
 };
+
 // modifica
 const modify = (req, res) => {
   const id = req.params.id;
   res.send(`Modifica del post con id ${req.params.id}`);
 };
+
 // update
 const update = (req, res) => {
   const id = req.params.id;
