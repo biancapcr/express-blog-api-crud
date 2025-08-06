@@ -5,6 +5,9 @@ const express = require('express');
 // creo l’applicazione
 const app = express();
 
+// importo errorsHandler
+const errorsHandler = require('./middleware/errorsHandler.js');
+
 // abilito il parsing del body in formato json
 app.use(express.json());
 
@@ -19,6 +22,9 @@ app.use(express.static('public'));
 
 // uso il file di router per definire le rotte dei post
 app.use('/posts', postRouter);
+
+// middleware errorsHandler
+app.use(errorsHandler);
 
 // definizione rotta base
 app.get('/', (req, res) => {
