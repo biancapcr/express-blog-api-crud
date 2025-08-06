@@ -1,10 +1,11 @@
 //console.log("Hello World");
+// import dei moduli
 // importo express
 const express = require('express');
-
 // creo l’applicazione
 const app = express();
-
+// importo notFound
+const notFound = require('./middleware/notFound.js');
 // importo errorsHandler
 const errorsHandler = require('./middleware/errorsHandler.js');
 
@@ -22,6 +23,9 @@ app.use(express.static('public'));
 
 // uso il file di router per definire le rotte dei post
 app.use('/posts', postRouter);
+
+// middleware notFound
+app.use(notFound);
 
 // middleware errorsHandler
 app.use(errorsHandler);
